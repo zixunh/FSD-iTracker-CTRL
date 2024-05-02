@@ -23,7 +23,7 @@ pip install spconv-cu113
 ```
 ```
 pip3 install waymo-open-dataset-tf-2-4-0 --user
-pip install mmcv-full==1.3.9 -f https://download.openmmlab.com/mmcv/dist/11.3/1.8.1/index.html
+conda install -c conda-forge mmcv-full==1.3.9
 pip install mmdet==2.14.0
 pip install mmsegmentation==0.14.1
 pip install -e .
@@ -40,7 +40,7 @@ To skip this detector and to get the detection results on Waymo:
 - Reorganize file structure, put them into `./data/ctrl_bins`. You should refer to file `./tools/ctrl/data_configs/fsd_base_vehicle.yaml` if you want to customize the storage location.
 
 Here, have attached the modified instructions of FSD as Base Detector for eaiser usage on CTRL.
-- Switch into the `dev` branch.
+- Switch into the `dev` branch or `cd ./submodules/FSD` in the `main` branch.
 - Model weights are not released, but the pretrained baseline models may be accessiable here
 ---
 

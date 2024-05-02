@@ -1,3 +1,7 @@
 [submodule "submodules/TorchEx"]
 	path = submodules/TorchEx
 	url = https://github.com/Abyssaledge/TorchEx
+[submodule "submodules/FSD"]
+	path = submodules/FSD
+	url = https://github.com/tusen-ai/SST.git
+	branch = dev
