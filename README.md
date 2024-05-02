@@ -1,8 +1,38 @@
-<!-- ## FSD: Fully Sparse 3D Object Detection  &  SST: Single-stride Sparse Transformer  -->
-	
-<!-- [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/embracing-single-stride-3d-object-detector/3d-object-detection-on-waymo-pedestrian)](https://paperswithcode.com/sota/3d-object-detection-on-waymo-pedestrian?p=embracing-single-stride-3d-object-detector)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/embracing-single-stride-3d-object-detector/3d-object-detection-on-waymo-cyclist)](https://paperswithcode.com/sota/3d-object-detection-on-waymo-cyclist?p=embracing-single-stride-3d-object-detector)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/embracing-single-stride-3d-object-detector/3d-object-detection-on-waymo-vehicle)](https://paperswithcode.com/sota/3d-object-detection-on-waymo-vehicle?p=embracing-single-stride-3d-object-detector) -->
+### Dependencies
+Clone the repo with your own key.
+```
+ssh-agent bash -c 'ssh-add /home/vision/zixun/.ssh/id_ed25519; git clone --recursive -j8 git@github.com:zixunh/FSD-iTracker-CTRL.git'
+```
+or simply use this:
+```
+git clone --recursive -j8 git@github.com:zixunh/FSD-iTracker-CTRL.git
+```
+
+Follow the instructions below for eaiser installation. For original instructions, please refer to https://github.com/zixunh/FSD-iTracker-CTRL/blob/main/docs/overall_instructions.md
+```
+conda create -n sst python=3.8
+pip install tensorflow==2.4.0
+pip install torch==1.8.1+cu111 torchvision==0.9.1+cu111 torchaudio===0.8.1 -f https://download.pytorch.org/whl/torch_stable.html
+conda install pytorch-scatter -c pyg
+```
+```
+cd submodules/TorchEx
+pip install -e .
+cd ../..
+pip install spconv-cu113
+```
+```
+pip3 install waymo-open-dataset-tf-2-4-0 --user
+pip install mmcv-full==1.3.9 -f https://download.openmmlab.com/mmcv/dist/11.3/1.8.1/index.html
+pip install mmdet==2.14.0
+pip install mmsegmentation==0.14.1
+pip install -e .
+```
+
+### Base Detector: FSD / FSDv2 / FSD++
+Inference 3D BBox based on 9 frames for each timestamp.
+- FSD, please switch to the `dev` branch in this repo.
+- FSDv2, please refer to this doc: 
 
 ### 🔥 We release the code of CTRL, the first open-sourced LiDAR-based auto-labeling system. See [ctrl_instruction](https://github.com/tusen-ai/SST/blob/main/docs/CTRL_instructions.md).
 ### 🔥 We release FSDv2. Better performance, easier use! Support Waymo, nuScenes, and Argoverse 2. See [fsdv2_instruction](https://github.com/tusen-ai/SST/blob/main/docs/fsdv2_instructions.md).

@@ -1,0 +1,3 @@
+[submodule "submodules/TorchEx"]
+	path = submodules/TorchEx
+	url = https://github.com/Abyssaledge/TorchEx
