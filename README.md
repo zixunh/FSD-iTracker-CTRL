@@ -1,5 +1,5 @@
 ### Dependencies
-Clone the repo with your own key.
+Clone the repo with your own private key location.
 ```
 ssh-agent bash -c 'ssh-add /home/vision/zixun/.ssh/id_ed25519; git clone --recursive -j8 git@github.com:zixunh/FSD-iTracker-CTRL.git'
 ```
@@ -8,7 +8,7 @@ or simply use this:
 git clone --recursive -j8 git@github.com:zixunh/FSD-iTracker-CTRL.git
 ```
 
-Follow the instructions below for eaiser installation. For original instructions, please refer to https://github.com/zixunh/FSD-iTracker-CTRL/blob/main/docs/overall_instructions.md
+Follow the instructions below for eaiser installation (order and version matters). For original instructions, please refer to https://github.com/zixunh/FSD-iTracker-CTRL/blob/main/docs/overall_instructions.md
 ```
 conda create -n sst python=3.8
 pip install tensorflow==2.4.0
@@ -31,12 +31,17 @@ pip install -e .
 
 ### Base Detector: FSD / FSDv2 / FSD++
 Inference 3D BBox based on 9 frames for each timestamp.
-- FSD, please switch to the `dev` branch in this repo.
-- FSDv2, please refer to this doc: 
+- FSD, please switch to the `dev` branch (https://github.com/zixunh/FSD-iTracker-CTRL/tree/dev) in this repo.
+- FSDv2, please refer to this doc: https://github.com/zixunh/FSD-iTracker-CTRL/blob/main/docs/fsdv2_instructions.md
+- FSD++, pls refer to: https://github.com/zixunh/FSD-iTracker-CTRL/blob/main/docs/FSD%2B%2B_instructions.md
 
-### 🔥 We release the code of CTRL, the first open-sourced LiDAR-based auto-labeling system. See [ctrl_instruction](https://github.com/tusen-ai/SST/blob/main/docs/CTRL_instructions.md).
-### 🔥 We release FSDv2. Better performance, easier use! Support Waymo, nuScenes, and Argoverse 2. See [fsdv2_instruction](https://github.com/tusen-ai/SST/blob/main/docs/fsdv2_instructions.md).
+To skip this detector and to get the detection results on Waymo:
+- Download `fsd_base_vehicle_val.bin` and `fsd6f6e_vehicle_full_train.bin` from https://drive.google.com/drive/folders/19-pvKCTLgJ_x6j1C3AvKgHM3GYMNxf6I
+- Reorganize file structure, put them into `./data/ctrl_bins`. You should refer to file `./tools/ctrl/data_configs/fsd_base_vehicle.yaml` if you want to customize the storage location.
 
+Here, have attached the modified instructions of FSD as Base Detector for eaiser usage on CTRL.
+- Switch into the `dev` branch.
+- Model weights are not released, but the pretrained baseline models may be accessiable here
 ---
 
 This repo contains official implementations of our series of work in LiDAR-based 3D object detection:
