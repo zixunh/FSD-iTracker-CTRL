@@ -5,3 +5,6 @@
 	path = submodules/FSD
 	url = https://github.com/tusen-ai/SST.git
 	branch = dev
+[submodule "submodules/iTracker"]
+	path = submodules/iTracker
+	url = https://github.com/Abyssaledge/ImmortalTracker-for-CTRL

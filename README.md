@@ -31,6 +31,17 @@ pip install mmsegmentation==0.14.1
 pip install -e .
 ```
 
+### Data
+Download WOD perception dataset 1.4:
+```
+./data       
+└── waymo
+  └── waymo_format
+       ├── training (containing tfrecords)
+       ├── validation   
+       ├── testing 
+```
+
 ### Base Detector: FSD / FSDv2 / FSD++
 Inference 3D BBox based on 9 frames for each timestamp.
 - FSD, please switch to the `dev` branch (https://github.com/zixunh/FSD-iTracker-CTRL/tree/dev) in this repo.
@@ -40,10 +51,40 @@ Inference 3D BBox based on 9 frames for each timestamp.
 To skip this detector and to get the detection results on Waymo:
 - Download `fsd_base_vehicle_val.bin` and `fsd6f6e_vehicle_full_train.bin` from https://drive.google.com/drive/folders/19-pvKCTLgJ_x6j1C3AvKgHM3GYMNxf6I
 - Reorganize file structure, put them into `./data/ctrl_bins`. You should refer to file `./tools/ctrl/data_configs/fsd_base_vehicle.yaml` if you want to customize the storage location.
+- These files contains detected proposals for vehicle.
 
 Here, have attached the modified instructions of FSD as Base Detector for eaiser usage on CTRL.
 - Switch into the `dev` branch or `cd ./submodules/FSD` in the `main` branch.
-- Model weights are not released, but the pretrained baseline models may be accessiable here
+- Model weights are not released in the `dev` branch, to run the training: `bash run.sh`
+```
+if you have this bug: ImportError: libcudart.so.10.2: cannot open shared object file: No such file or directory
+
+Should work if successfully installed cuda-10-2.
+```
+
+### Immortal Tracker
+pls refer to https://github.com/Abyssaledge/ImmortalTracker-for-CTRL
+or `cd ./submodules/iTracker`
+
+```
+conda create -n iTracker python=3.7 && conda activate iTracker && pip install -r requirements.txt
+pip install protobuf==3.20.1
+bash preparedata/waymo/waymo_preparedata.sh /home/vision/zixun/FSD-iTracker-CTRL/data/waymo/waymo_format
+```
+You should find the preprocessed results in /home/vision/zixun/FSD-iTracker-CTRL/submodules/iTracker/data/waymo; which would contains the poses and timestamps.
+```
+pip install ipdb
+bash run_mot.sh (bugs here, I found my bin is empty.)
+```
+
+### CTRL
+To generate assignments for track-centric learning, just follow https://github.com/zixunh/FSD-iTracker-CTRL/blob/main/docs/CTRL_instructions.md
+
+you might occur problem when you are extracting poses. You can get the exact same info from the preprocessing of Immortal Tracker that you have already ran.
+
+If you are struck with the FSD, for step 3, you can use `fsd_base_vehicle_val.bin` and `fsd6f6e_vehicle_full_train.bin` downloaded from https://drive.google.com/drive/folders/19-pvKCTLgJ_x6j1C3AvKgHM3GYMNxf6I
+
+
 ---
 
 This repo contains official implementations of our series of work in LiDAR-based 3D object detection:

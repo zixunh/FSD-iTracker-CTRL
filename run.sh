@@ -1,5 +1,5 @@
-DIR=fsd
-WORK=work_dirs
+DIR=/home/vision/zixun/FSD-iTracker-CTRL/configs/fsd
+WORK=ctrl
 CONFIG=fsd_waymoD1_1x
 bash tools/dist_train.sh configs/$DIR/$CONFIG.py 8 --work-dir ./$WORK/$CONFIG/ --cfg-options evaluation.pklfile_prefix=./$WORK/$CONFIG/results evaluation.metric=fast --seed 1
 
