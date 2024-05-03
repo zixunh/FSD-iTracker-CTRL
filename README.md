@@ -21,6 +21,8 @@ pip install -e .
 cd ../..
 pip install spconv-cu113
 ```
+be aware of your cuda verison includes libcudart.so.10.2, you can install multi-versions.
+and download the wheel (mmcv 1.3.9) here: https://download.openmmlab.com/mmcv/dist/cu102/torch1.8.1/index.html
 ```
 pip3 install waymo-open-dataset-tf-2-4-0 --user
 conda install -c conda-forge mmcv-full==1.3.9
